@@ -1,9 +1,7 @@
 package src.app;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
-import java.awt.Color;
 
 import lists.CanvasStrategies;
 import lists.ShapeData;
@@ -20,7 +18,7 @@ public class Canvas implements ICanvas {
     public Canvas() {
         selectedFig = -1;
         figures = new ArrayList<Shape>();
-        this.strategies = CanvasStrategies.createStrategies(this);
+        strategies = CanvasStrategies.createStrategies(this);
     }
 
     public void receive(String topic, Object message) {
@@ -29,7 +27,6 @@ public class Canvas implements ICanvas {
 
     public void addShape(Shape fig) {
         figures.add(fig);
-        selectedFig = figures.size() - 1;
     }
 
     public void removeShape(Shape fig) {
@@ -42,6 +39,10 @@ public class Canvas implements ICanvas {
             if (figures.get(i).contains(p)) {
                 selectedFig = i;
             }
+        }
+        if (existsSelection()) {
+            Out.print("App highlights shape number " + selectedFig);
+            Out.print("\t" + getSelectedShape().getString());
         }
     }
 
@@ -56,27 +57,34 @@ public class Canvas implements ICanvas {
     public void removeSelected() {
         if (existsSelection()) {
             figures.remove(selectedFig);
+            Out.print("Shape number " + selectedFig + " disapears");
         }
     }
 
     public void changeColorInter(int color) {
         if (existsSelection()) {
             figures.get(selectedFig).setColorInter(color);
+            Out.print("Shape number " + selectedFig + " changes internal color:");
+            Out.print("\t" + getSelectedShape().getString());
         }
     }
 
     public void changeColorExter(int color) {
         if (existsSelection()) {
             figures.get(selectedFig).setColorExter(color);
+            Out.print("Shape number " + selectedFig + " changes external color:");
+            Out.print("\t" + getSelectedShape().getString());
         }
     }
 
     public void changeShape(int value) {
         if (existsSelection()) {
-            int oldShape = 4;
             Shape newShape = ShapeData.getBuildShape().get(value).apply(getSelectedShape());
             figures.remove(selectedFig);
             figures.add(selectedFig, newShape);
+            Out.print(
+                    "Shape number " + selectedFig + " transforms into " + ShapeData.getShapeString().get(value) + ":");
+            Out.print("\t" + getSelectedShape().getString());
         }
     }
 }

@@ -21,7 +21,6 @@ public class User implements IUser {
         broker.send("Click", p);
     }
 
-    @Override
     public void dragMouse(int xFrom, int yFrom, int xTo, int yTo) {
         Point fromPoint = new Point(xFrom, yFrom);
         Point toPoint = new Point(xTo, yTo);
@@ -30,24 +29,26 @@ public class User implements IUser {
         broker.send("endPoint", toPoint);
     }
 
-    @Override
     public void chooseShape(int sNumber) {
         Out.print(name + " selects shape number " + sNumber + ": " + ShapeData.getShapeString().get(sNumber));
         broker.send("Shape", sNumber);
 
     }
 
-    @Override
     public void chooseExtColor(int cNumber) {
         Out.print(name + " selects extColor number " + cNumber + ": " + ColorData.getColorString().get(cNumber));
         broker.send("cExt", cNumber);
 
     }
 
-    @Override
     public void chooseIntColor(int cNumber) {
         Out.print(name + " selects intColor number " + cNumber + ": " + ColorData.getColorString().get(cNumber));
         broker.send("cInt", cNumber);
 
+    }
+
+    public void trashIcon() {
+        Out.print(name + " presses trash icon");
+        broker.send("trash", null);
     }
 }

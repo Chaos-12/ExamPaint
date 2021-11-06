@@ -14,6 +14,7 @@ public class CanvasStrategies {
         strategies.put("cExt", (value) -> c.changeColorExter((int) value));
         strategies.put("cInt", (value) -> c.changeColorInter((int) value));
         strategies.put("Click", (point) -> c.selectShape((Point) point));
+        strategies.put("trash", (o) -> c.removeSelected());
         return strategies;
     }
 }

@@ -22,17 +22,7 @@ public class Painter implements IPainter {
         setShapeBuilder(0);
         setColorExt(0);
         setColorInt(1);
-        createStrategies();
-    }
-
-    public void createStrategies() {
-        strategies = new HashMap<String, IFunction>();
-        strategies.put("Shape", (value) -> this.setShapeBuilder((int) value));
-        strategies.put("cExt", (value) -> this.setColorExt((int) value));
-        strategies.put("cInt", (value) -> this.setColorInt((int) value));
-        strategies.put("endPoint", (p) -> {
-            this.setEndPoint((Point) p);
-        });
+        strategies = PainterStrategies.createStrategies(this);
     }
 
     public void paintShape() {

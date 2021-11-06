@@ -17,9 +17,6 @@ public class ShapeData {
         figString = new ArrayList<String>();
         builderFromPoint = new ArrayList<IBiFunction<Shape, Point>>();
         builderFromShape = new ArrayList<UnaryOperator<Shape>>();
-        figString.add("Circle");
-        builderFromPoint.add((p, q) -> new Circle(p, q));
-        builderFromShape.add((fig) -> new Circle(fig));
         figString.add("Heart");
         builderFromPoint.add((p, q) -> new Heart(p, q));
         builderFromShape.add((fig) -> new Heart(fig));
@@ -29,9 +26,15 @@ public class ShapeData {
         figString.add("Star");
         builderFromPoint.add((p, q) -> new Star(p, q));
         builderFromShape.add((fig) -> new Star(fig));
+        figString.add("Oval");
+        builderFromPoint.add((p, q) -> new Oval(p, q));
+        builderFromShape.add((fig) -> new Oval(fig));
         figString.add("Rectangle");
         builderFromPoint.add((p, q) -> new Rectangle(p, q));
         builderFromShape.add((fig) -> new Rectangle(fig));
+        figString.add("Hexagon");
+        builderFromPoint.add((p, q) -> new Hexagon(p, q));
+        builderFromShape.add((fig) -> new Hexagon(fig));
     }
 
     public static List<String> getShapeString() {

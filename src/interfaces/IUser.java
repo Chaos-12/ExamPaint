@@ -10,4 +10,6 @@ public interface IUser {
     public void chooseExtColor(int cNumber);
 
     public void chooseIntColor(int cNumber);
+
+    public void trashIcon();
 }
