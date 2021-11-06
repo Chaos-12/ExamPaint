@@ -14,7 +14,7 @@ public class Main {
         Point last = new Point(50, 50);
 
         pedro.changeColorExt(3);
-        pedro.changeShape(4);
+        pedro.changeShapeBuilder(4);
         pedro.paintShape(origin, last);
         Shape s = lienzo.getSelectedShape();
         Out.print(s.getString());

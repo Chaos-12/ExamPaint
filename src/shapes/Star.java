@@ -15,5 +15,4 @@ public class Star extends Shape {
     public void draw() {
         // TODO
     }
-
 }

@@ -15,5 +15,4 @@ public class Heart extends Shape {
     public void draw() {
         // TODO
     }
-
 }

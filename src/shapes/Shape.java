@@ -28,8 +28,8 @@ public abstract class Shape {
     }
 
     public String getStringColors() {
-        return "cInt: [" + cInt.getRed() + ", " + cInt.getGreen() + ", " + cInt.getBlue() + "], cExt: [" + cExt.getRed()
-                + ", " + cExt.getGreen() + ", " + cExt.getBlue() + "]";
+        return "cExt: [" + cExt.getRed() + ", " + cExt.getGreen() + ", " + cExt.getBlue() + "], cExt: [" + cInt.getRed()
+                + ", " + cInt.getGreen() + ", " + cInt.getBlue() + "]";
     }
 
     public String getStringPoints() {

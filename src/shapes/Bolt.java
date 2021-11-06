@@ -15,5 +15,4 @@ public class Bolt extends Shape {
     public void draw() {
         // TODO
     }
-
 }

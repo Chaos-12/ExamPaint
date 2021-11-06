@@ -17,7 +17,7 @@ public class Painter {
         this.canvas = canvas;
         this.sBuild = new ShapeBuilder();
         this.cBuild = new ColorBuilder();
-        changeShape(0);
+        changeShapeBuilder(0);
         changeColorExt(0);
         changeColorInt(1);
     }
@@ -29,7 +29,7 @@ public class Painter {
         this.canvas.addShape(s);
     }
 
-    public void changeShape(int value) {
+    public void changeShapeBuilder(int value) {
         this.createShape = sBuild.build(value);
     }
 
