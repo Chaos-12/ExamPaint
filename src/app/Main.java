@@ -29,27 +29,25 @@ public class Main {
 
         IUser pedro = new User("Pedro", controller);
 
-        pedro.chooseIntColor(2);
+        pedro.chooseIntColor(4);
         pedro.dragMouse(0, 100, 100, 0);
+        pedro.chooseIntColor(2);
 
-        pedro.chooseShape(1);
+        pedro.clickOn(110, 110);
+        pedro.chooseShape(5);
         pedro.chooseIntColor(5);
         pedro.dragMouse(110, 00, 210, 100);
+        pedro.chooseShape(2);
 
+        pedro.clickOn(0, 110);
         pedro.chooseShape(2);
         pedro.chooseExtColor(5);
         pedro.chooseIntColor(1);
         pedro.dragMouse(220, 00, 320, 100);
 
-        pedro.clickOn(50, 80);
-        pedro.chooseIntColor(4);
-
-        pedro.clickOn(120, 50);
-        pedro.chooseShape(5);
-
-        pedro.clickOn(250, 40);
+        pedro.dragMouse(40, 100, 0, 45);
         pedro.trashIcon();
 
-        Out.print("Exito");
+        Out.print("Exit");
     }
 }

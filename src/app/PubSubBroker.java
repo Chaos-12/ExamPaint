@@ -30,6 +30,7 @@ public class PubSubBroker implements IPubSubBroker {
             lista.add(subscriber);
             interestMap.put(topic, lista);
         }
+        subscriber.getDispose(topic, (t, s) -> this.unSubscribe(t, s));
     }
 
     public void unSubscribe(String topic, ISub subscriber) {

@@ -1,17 +1,18 @@
 package src.app;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 import lists.CanvasStrategies;
 import lists.ShapeData;
 import src.shapes.Shape;
 import src.shapes.Point;
-import src.interfaces.ICanvas;
-import src.interfaces.IFunction;
+import src.interfaces.*;
 
 public class Canvas implements ICanvas {
-    private static Map<String, IFunction> strategies;
+    private Map<String, IFunction> strategies;
+    public Map<String, IBiArgFunction> unsubscribe;
     private ArrayList<Shape> figures;
     private int selectedFig;
 
@@ -19,6 +20,7 @@ public class Canvas implements ICanvas {
         selectedFig = -1;
         figures = new ArrayList<Shape>();
         strategies = CanvasStrategies.createStrategies(this);
+        unsubscribe = new HashMap<String, IBiArgFunction>();
     }
 
     public void receive(String topic, Object message) {
@@ -27,6 +29,7 @@ public class Canvas implements ICanvas {
 
     public void addShape(Shape fig) {
         figures.add(fig);
+        selectedFig = figures.size() - 1;
     }
 
     public void removeShape(Shape fig) {
@@ -43,6 +46,8 @@ public class Canvas implements ICanvas {
         if (existsSelection()) {
             Out.print("App highlights shape number " + selectedFig);
             Out.print("\t" + getSelectedShape().getString());
+        } else {
+            Out.print("No shape is highlighted");
         }
     }
 
@@ -86,5 +91,13 @@ public class Canvas implements ICanvas {
                     "Shape number " + selectedFig + " transforms into " + ShapeData.getShapeString().get(value) + ":");
             Out.print("\t" + getSelectedShape().getString());
         }
+    }
+
+    public void getDispose(String topic, IBiArgFunction f) {
+        unsubscribe.put(topic, f);
+    }
+
+    public void unsubscribe(String topic) {
+        this.unsubscribe.get(topic).execute(topic, this);
     }
 }

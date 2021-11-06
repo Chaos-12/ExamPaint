@@ -9,7 +9,8 @@ import src.shapes.Shape;
 import src.shapes.Point;
 
 public class Painter implements IPainter {
-    private static Map<String, IFunction> strategies;
+    private Map<String, IFunction> strategies;
+    private Map<String, IBiArgFunction> unsubscribe;
     private ICanvas canvas;
     private IBiFunction<Shape, Point> createShape;
     private int cExt;
@@ -23,6 +24,7 @@ public class Painter implements IPainter {
         setColorExt(0);
         setColorInt(1);
         strategies = PainterStrategies.createStrategies(this);
+        unsubscribe = new HashMap<String, IBiArgFunction>();
     }
 
     public void paintShape() {
@@ -60,5 +62,13 @@ public class Painter implements IPainter {
     public void clearPoints() {
         this.initPoint = null;
         this.endPoint = null;
+    }
+
+    public void getDispose(String topic, IBiArgFunction f) {
+        unsubscribe.put(topic, f);
+    }
+
+    public void unsubscribe(String topic) {
+        this.unsubscribe.get(topic).execute(topic, this);
     }
 }
