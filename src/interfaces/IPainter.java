@@ -1,4 +1,4 @@
-package src.app;
+package src.interfaces;
 
 import src.shapes.Point;
 

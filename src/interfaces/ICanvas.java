@@ -1,4 +1,4 @@
-package src.app;
+package src.interfaces;
 
 import java.awt.Color;
 import src.shapes.Shape;

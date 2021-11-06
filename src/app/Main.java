@@ -1,5 +1,7 @@
 package src.app;
 
+import src.interfaces.ICanvas;
+import src.interfaces.IPainter;
 import src.shapes.*;
 
 public class Main {

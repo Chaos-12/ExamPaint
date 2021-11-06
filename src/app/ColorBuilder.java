@@ -3,7 +3,7 @@ package src.app;
 import java.util.ArrayList;
 import java.util.List;
 
-import src.tools.IBuilder;
+import src.interfaces.IBuilder;
 
 import java.awt.Color;
 

@@ -3,9 +3,9 @@ package src.app;
 import java.util.ArrayList;
 import java.util.List;
 
+import src.interfaces.IBiFunction;
+import src.interfaces.IBuilder;
 import src.shapes.*;
-import src.tools.IBiFunction;
-import src.tools.IBuilder;
 
 public class ShapeBuilder implements IBuilder<IBiFunction<Shape, Point>> {
 

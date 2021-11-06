@@ -3,6 +3,7 @@ package src.app;
 import java.util.ArrayList;
 import java.awt.Color;
 import src.shapes.Shape;
+import src.interfaces.ICanvas;
 import src.shapes.Point;
 
 public class Canvas implements ICanvas {

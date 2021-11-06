@@ -2,8 +2,8 @@ package src.app;
 
 import java.awt.Color;
 import src.shapes.Shape;
+import src.interfaces.*;
 import src.shapes.Point;
-import src.tools.*;
 
 public class Painter implements IPainter {
     private ICanvas canvas;
