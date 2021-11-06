@@ -3,11 +3,17 @@ package src.interfaces;
 import src.shapes.Point;
 
 public interface IPainter {
-    public void paintShape(Point p, Point q);
+    public void paintShape();
 
-    public void changeShapeBuilder(int value);
+    public void setShapeBuilder(int value);
 
-    public void changeColorExt(int value);
+    public void setColorExt(int value);
 
-    public void changeColorInt(int value);
+    public void setColorInt(int value);
+
+    public void setInitialPoint(Point p);
+
+    public void setEndPoint(Point p);
+
+    public void clearPoints();
 }
