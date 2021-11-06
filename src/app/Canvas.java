@@ -14,6 +14,7 @@ public class Canvas {
 
     public void addShape(Shape fig) {
         figures.add(fig);
+        selectedFig = figures.size() - 1;
     }
 
     public void removeShape(Shape fig) {
@@ -29,8 +30,12 @@ public class Canvas {
         }
     }
 
+    public Shape getSelectedShape() {
+        return figures.get(selectedFig);
+    }
+
     public boolean existsSelect() {
-        return !(selectedFig == -1);
+        return selectedFig != -1;
     }
 
     public void removeSelected() {

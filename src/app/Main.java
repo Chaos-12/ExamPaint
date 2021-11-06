@@ -7,14 +7,18 @@ public class Main {
 
     public static void main(String[] agrs) {
         Out.print("Iniciando la app");
+
         Canvas lienzo = new Canvas();
+        Painter pedro = new Painter(lienzo);
         Point origin = new Point(0, 0);
         Point last = new Point(50, 50);
-        ShapeBuilder sb = new ShapeBuilder();
 
-        Shape s = sb.build(2).execute(origin, last);
-
+        pedro.changeColorExt(3);
+        pedro.changeShape(4);
+        pedro.paintShape(origin, last);
+        Shape s = lienzo.getSelectedShape();
         Out.print(s.getString());
+
         Out.print("Exito");
     }
 }
