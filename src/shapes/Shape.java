@@ -1,12 +1,12 @@
 package src.shapes;
 
-import java.awt.Color;
+import lists.ColorData;
 
 public abstract class Shape {
     private Point pTop;
     private Point pBot;
-    private Color cInt;
-    private Color cExt;
+    private int cExt;
+    private int cInt;
 
     public Shape(Point p, Point q) {
         int xMin = Math.min(p.getX(), q.getX());
@@ -15,21 +15,27 @@ public abstract class Shape {
         int yMax = Math.max(p.getY(), q.getY());
         this.pTop = new Point(xMin, yMin);
         this.pBot = new Point(xMax, yMax);
-        this.cInt = Color.white;
-        this.cExt = Color.black;
+        this.cExt = 0;
+        this.cInt = 1;
     }
 
-    public void setColorInter(Color c) {
-        cInt = c;
+    public Shape(Shape fig) {
+        this.pTop = fig.pTop;
+        this.pBot = fig.pBot;
+        this.cExt = fig.cExt;
+        this.cInt = fig.cInt;
     }
 
-    public void setColorExter(Color c) {
-        cExt = c;
+    public void setColorInter(int value) {
+        cInt = value;
+    }
+
+    public void setColorExter(int value) {
+        cExt = value;
     }
 
     public String getStringColors() {
-        return "cExt: [" + cExt.getRed() + ", " + cExt.getGreen() + ", " + cExt.getBlue() + "], cExt: [" + cInt.getRed()
-                + ", " + cInt.getGreen() + ", " + cInt.getBlue() + "]";
+        return "cExt: " + ColorData.getColorString().get(cExt) + ", cInt: " + ColorData.getColorString().get(cInt);
     }
 
     public String getStringPoints() {

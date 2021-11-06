@@ -2,7 +2,7 @@ package src.interfaces;
 
 import src.shapes.Point;
 
-public interface IPainter {
+public interface IPainter extends ISub {
     public void paintShape();
 
     public void setShapeBuilder(int value);

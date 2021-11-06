@@ -1,39 +1,27 @@
 package src.app;
 
-import java.awt.Color;
 import java.util.HashMap;
 import java.util.Map;
 
-import src.shapes.Shape;
+import lists.*;
 import src.interfaces.*;
+import src.shapes.Shape;
 import src.shapes.Point;
 
-public class Painter implements IPainter, ISub {
+public class Painter implements IPainter {
     private static Map<String, IFunction> strategies;
-
     private ICanvas canvas;
-    private ShapeBuilder sBuild;
     private IBiFunction<Shape, Point> createShape;
-    private ColorBuilder cBuild;
-    private Color cExt;
-    private Color cInt;
+    private int cExt;
+    private int cInt;
     private Point initPoint;
     private Point endPoint;
 
     public Painter(ICanvas canvas) {
         this.canvas = canvas;
-        this.sBuild = new ShapeBuilder();
-        this.cBuild = new ColorBuilder();
         setShapeBuilder(0);
         setColorExt(0);
         setColorInt(1);
-    }
-
-    public void paintShape() {
-        Shape s = createShape.execute(initPoint, endPoint);
-        s.setColorExter(cExt);
-        s.setColorInter(cInt);
-        this.canvas.addShape(s);
         createStrategies();
     }
 
@@ -42,8 +30,17 @@ public class Painter implements IPainter, ISub {
         strategies.put("Shape", (value) -> this.setShapeBuilder((int) value));
         strategies.put("cExt", (value) -> this.setColorExt((int) value));
         strategies.put("cInt", (value) -> this.setColorInt((int) value));
-        strategies.put("initPoint", (p) -> this.setInitialPoint((Point) p));
-        strategies.put("endPoint", (p) -> this.setEndPoint((Point) p));
+        strategies.put("endPoint", (p) -> {
+            this.setEndPoint((Point) p);
+        });
+    }
+
+    public void paintShape() {
+        Shape s = createShape.execute(initPoint, endPoint);
+        s.setColorExter(cExt);
+        s.setColorInter(cInt);
+        this.canvas.addShape(s);
+        Out.print("App draws a " + s.getString());
     }
 
     public void receive(String topic, Object message) {
@@ -51,15 +48,15 @@ public class Painter implements IPainter, ISub {
     }
 
     public void setShapeBuilder(int value) {
-        this.createShape = sBuild.build(value);
+        this.createShape = ShapeData.getBuilderPoint().get(value);
     }
 
     public void setColorExt(int value) {
-        this.cExt = cBuild.build(value);
+        this.cExt = value;
     }
 
     public void setColorInt(int value) {
-        this.cInt = cBuild.build(value);
+        this.cInt = value;
     }
 
     public void setInitialPoint(Point p) {

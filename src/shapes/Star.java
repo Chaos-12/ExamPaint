@@ -6,6 +6,10 @@ public class Star extends Shape {
         super(p, q);
     }
 
+    public Star(Shape fig) {
+        super(fig);
+    }
+
     @Override
     public String getString() {
         return "Star -> " + super.getString();

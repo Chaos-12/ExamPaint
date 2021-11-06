@@ -1,17 +1,30 @@
 package src.app;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.awt.Color;
+
+import lists.CanvasStrategies;
+import lists.ShapeData;
 import src.shapes.Shape;
-import src.interfaces.ICanvas;
 import src.shapes.Point;
+import src.interfaces.ICanvas;
+import src.interfaces.IFunction;
 
 public class Canvas implements ICanvas {
+    private static Map<String, IFunction> strategies;
     private ArrayList<Shape> figures;
-    private int selectedFig = -1;
+    private int selectedFig;
 
     public Canvas() {
+        selectedFig = -1;
         figures = new ArrayList<Shape>();
+        this.strategies = CanvasStrategies.createStrategies(this);
+    }
+
+    public void receive(String topic, Object message) {
+        strategies.get(topic).execute(message);
     }
 
     public void addShape(Shape fig) {
@@ -46,15 +59,24 @@ public class Canvas implements ICanvas {
         }
     }
 
-    public void changeColorInter(Color c) {
+    public void changeColorInter(int color) {
         if (existsSelection()) {
-            figures.get(selectedFig).setColorInter(c);
+            figures.get(selectedFig).setColorInter(color);
         }
     }
 
-    public void changeColorExter(Color c) {
+    public void changeColorExter(int color) {
         if (existsSelection()) {
-            figures.get(selectedFig).setColorExter(c);
+            figures.get(selectedFig).setColorExter(color);
+        }
+    }
+
+    public void changeShape(int value) {
+        if (existsSelection()) {
+            int oldShape = 4;
+            Shape newShape = ShapeData.getBuildShape().get(value).apply(getSelectedShape());
+            figures.remove(selectedFig);
+            figures.add(selectedFig, newShape);
         }
     }
 }

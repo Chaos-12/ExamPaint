@@ -1,10 +1,9 @@
 package src.interfaces;
 
-import java.awt.Color;
 import src.shapes.Shape;
 import src.shapes.Point;
 
-public interface ICanvas {
+public interface ICanvas extends ISub {
     public void addShape(Shape fig);
 
     public void removeShape(Shape fig);
@@ -17,7 +16,9 @@ public interface ICanvas {
 
     public void removeSelected();
 
-    public void changeColorInter(Color c);
+    public void changeColorInter(int color);
 
-    public void changeColorExter(Color c);
+    public void changeColorExter(int color);
+
+    public void changeShape(int value);
 }

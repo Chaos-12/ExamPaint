@@ -6,6 +6,10 @@ public class Heart extends Shape {
         super(p, q);
     }
 
+    public Heart(Shape fig) {
+        super(fig);
+    }
+
     @Override
     public String getString() {
         return "Heart -> " + super.getString();
