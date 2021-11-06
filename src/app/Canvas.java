@@ -2,9 +2,10 @@ package src.app;
 
 import java.util.ArrayList;
 import java.awt.Color;
-import src.shapes.*;
+import src.shapes.Shape;
+import src.shapes.Point;
 
-public class Canvas {
+public class Canvas implements ICanvas {
     private ArrayList<Shape> figures;
     private int selectedFig = -1;
 
@@ -34,24 +35,24 @@ public class Canvas {
         return figures.get(selectedFig);
     }
 
-    public boolean existsSelect() {
+    public boolean existsSelection() {
         return selectedFig != -1;
     }
 
     public void removeSelected() {
-        if (existsSelect()) {
+        if (existsSelection()) {
             figures.remove(selectedFig);
         }
     }
 
     public void changeColorInter(Color c) {
-        if (existsSelect()) {
+        if (existsSelection()) {
             figures.get(selectedFig).setColorInter(c);
         }
     }
 
     public void changeColorExter(Color c) {
-        if (existsSelect()) {
+        if (existsSelection()) {
             figures.get(selectedFig).setColorExter(c);
         }
     }

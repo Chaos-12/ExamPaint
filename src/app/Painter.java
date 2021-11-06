@@ -5,15 +5,15 @@ import src.shapes.Shape;
 import src.shapes.Point;
 import src.tools.*;
 
-public class Painter {
-    private Canvas canvas;
+public class Painter implements IPainter {
+    private ICanvas canvas;
     private ShapeBuilder sBuild;
     private IBiFunction<Shape, Point> createShape;
     private ColorBuilder cBuild;
     private Color cExt;
     private Color cInt;
 
-    public Painter(Canvas canvas) {
+    public Painter(ICanvas canvas) {
         this.canvas = canvas;
         this.sBuild = new ShapeBuilder();
         this.cBuild = new ColorBuilder();
