@@ -1,14 +1,14 @@
 package src.shapes;
 
-public class Bolt extends Shape {
+public class Rectangle extends Shape {
 
-    public Bolt(Point p, Point q) {
+    public Rectangle(Point p, Point q) {
         super(p, q);
     }
 
     @Override
     public String getString() {
-        return "Bolt -> " + super.getString();
+        return "Rectangle -> " + super.getString();
     }
 
     @Override
