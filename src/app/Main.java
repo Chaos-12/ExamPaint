@@ -37,7 +37,7 @@ public class Main {
         pedro.chooseShape(5);
         pedro.chooseIntColor(5);
         pedro.dragMouse(110, 00, 210, 100);
-        pedro.chooseShape(2);
+        pedro.chooseShape(1);
 
         pedro.clickOn(0, 110);
         pedro.chooseShape(2);
